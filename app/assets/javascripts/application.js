@@ -13,4 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require 'bootstrap-sass-official'
 //= require_tree .
+
+$(function() {
+  setTimeout(function() {
+      $("#flash-alert").alert('close');
+  }, 3000);
+});
