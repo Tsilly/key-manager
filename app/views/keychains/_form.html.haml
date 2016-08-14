@@ -1,0 +1,22 @@
+.col-sm-12
+  = render 'shared/error', object: keychain
+  = form_for keychain do |f|
+    .form-group
+      = f.label :title
+      = f.text_field :title, class: 'form-control'
+    .form-group
+      = f.label :username
+      = f.text_field :username, class: 'form-control'
+    .form-group
+      = f.label :password
+      = f.text_field :password, class: 'form-control'
+      %p.help-block A valid password should contain, at least 10 letters (including at least 1 Capital Letter), at least 3 numbers, and at least 1 special characters (e.g. %, ?, #, @...).
+    .form-group
+      = f.label :url
+      = f.text_field :url, class: 'form-control'
+    .form-group
+      = f.label "Select Category"
+      = f.collection_select :category_id, @categories, :id, :title, {prompt: "Select a category"}, {class: "form-control"}
+    = link_to "Cancel", :back, class: "btn btn-default"
+    = f.submit "Save", class: "btn btn-primary"
+  

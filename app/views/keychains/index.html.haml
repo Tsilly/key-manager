@@ -1,0 +1,16 @@
+.row
+  = render 'shared/pageheader', title:"Keychains"
+.row
+  .col-sm-12
+    = link_to categories_path do
+      %p.pull-left
+        %span.glyphicon.glyphicon-th-list{"aria-hidden" => true}
+        Go to Categories List
+    = link_to new_keychain_path do
+      %p.pull-right
+        %span.glyphicon.glyphicon-plus-sign{"aria-hidden" => true}
+        Create A Keychain
+.row
+  .col-sm-12
+    = render 'keychain_table', keychains: @keychains
+  

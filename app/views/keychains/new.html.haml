@@ -1,0 +1,12 @@
+.row
+  = render 'shared/pageheader', title:"Create Keychain"
+.row
+  .col-sm-12
+    = link_to keychains_path do
+      %p.pull-left
+        %span.glyphicon.glyphicon-th-list{"aria-hidden" => true}
+        Go to Keychains List
+
+.row
+  = render 'form', keychain: @keychain
+  

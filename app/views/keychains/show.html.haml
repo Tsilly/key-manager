@@ -1,0 +1,41 @@
+.row
+  .col-sm-12
+    .page-header
+    %h1
+      = @keychain.title
+      = link_to edit_keychain_path(@keychain) do
+        %small
+          %span.glyphicon.glyphicon-pencil{"aria-hidden" => true}
+.row       
+  = render 'breadscrumbs', keychain: @keychain
+.row
+  .col-sm-12
+    = link_to keychains_path do
+      %p.pull-left
+        %span.glyphicon.glyphicon-th-list{"aria-hidden" => true}
+        Go to Keychains List
+    = link_to new_keychain_path do
+      %p.pull-right
+        %span.glyphicon.glyphicon-plus-sign{"aria-hidden" => true}
+        Create A Keychain
+
+.row
+  .col-sm-12
+    .well
+      %h4 Username
+      %p= @keychain.username
+
+      %h4 Password
+      %p= @keychain.password
+
+      %h4 URL
+      %p= link_to @keychain.url, @keychain.url
+
+      %h4 Created at:
+      %p= @keychain.created_at.to_formatted_s(:long)
+
+      %h4 Last updated:
+      %p= @keychain.updated_at.to_formatted_s(:long)
+      
+      %hr
+      %p= link_to "Edit", edit_keychain_path(@keychain), class: "btn btn-primary"

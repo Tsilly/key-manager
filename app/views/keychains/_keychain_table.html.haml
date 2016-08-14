@@ -1,0 +1,26 @@
+%table.table.table-hover
+  %tr
+    %th Title
+    %th Username
+    %th Password
+    %th Url
+    %th Category
+    %th Created at
+    %th
+    %th
+    - keychains.each do |k|
+      %tr
+        %td= link_to k.title, keychain_path(k)
+        %td= k.username
+        %td= k.password
+        %td= link_to truncate(k.url, length: 25), k.url
+        %td= link_to_if k.category.present?, k.category.title, category_path(k.category)
+        %td= k.created_at.to_formatted_s(:long)
+        %td
+          = link_to keychain_path(k), data: {:confirm => "Are you sure?"}, :method => :delete do
+            %span.glyphicon.glyphicon-trash{"aria-hidden" => true}
+        %td
+          = link_to edit_keychain_path(k) do
+            %span.glyphicon.glyphicon-pencil{"aria-hidden" => true}
+
+            
