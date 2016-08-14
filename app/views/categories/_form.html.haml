@@ -1,0 +1,10 @@
+.col-sm-12
+  = render 'shared/error', object: category
+  = form_for category do |f|
+    .form-group
+      = f.label :title
+      = f.text_field :title, class: 'form-control'
+
+    = link_to "Cancel", :back, class: "btn btn-default"
+    = f.submit "Save", class: "btn btn-primary"
+  

@@ -1,0 +1,14 @@
+.row
+  = render 'shared/pageheader', title:"Edit Category"
+
+.row
+  = render 'breadscrumbs', category: @category
+
+.row
+  = render 'form', category: @category
+
+%hr
+.row
+  .col-sm-12
+    %h3= "Keychain in #{@category.title} (#{keychain_number(@category)})"
+    = render 'keychains/keychain_table', keychains: @category.keychains

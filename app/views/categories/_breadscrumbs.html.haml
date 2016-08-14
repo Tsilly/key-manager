@@ -1,0 +1,6 @@
+.col-sm-12
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li= link_to "Categories", categories_path
+    - if category.present?
+      %li= link_to category.title, category_path(category)

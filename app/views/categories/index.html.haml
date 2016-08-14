@@ -1,0 +1,30 @@
+.row
+  = render 'shared/pageheader', title: "Categories"
+.row
+  = render 'breadscrumbs', category: nil
+.row
+  .col-sm-12
+    = link_to keychains_path do
+      %p.pull-left
+        %span.glyphicon.glyphicon-th-list{"aria-hidden" => true}
+        Go to Keychains List
+    = link_to new_category_path do
+      %p.pull-right
+        %span.glyphicon.glyphicon-plus-sign{"aria-hidden" => true}
+        Create a category
+.row
+  .col-sm-12
+    .list-group
+      - @categories.each do |c|
+        .list-group-item
+          .row
+            .col-sm-11
+              %h4.list-group-item-heading= link_to c.title, category_path(c)
+              %p.list-group-item-text= "Keychains: #{keychain_number(c)}"
+            .col-sm-1
+              = link_to edit_category_path(c) do
+                %span.glyphicon.glyphicon-pencil{"aria-hidden" => true}
+              - if c.is_empty?
+                = link_to category_path(c), :method => :delete, data: {:confirm => "Are you sure?"} do
+                  %span.glyphicon.glyphicon-trash{"aria-hidden" => true}
+        
