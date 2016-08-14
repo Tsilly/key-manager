@@ -1,4 +1,6 @@
 class Keychain < ActiveRecord::Base
+  default_scope { order(created_at: :desc) }
+  
   validates_presence_of :title
   validates_presence_of :username
   validates_presence_of :url
@@ -24,15 +26,15 @@ class Keychain < ActiveRecord::Base
   private
   def validate_password
     str = self.password 
-    errors.add(:password, message: 'should not contain whitespace') if str.match(/\s/) # No White Space
+    errors.add(:password, :invalid, message: 'should not contain whitespace') if str.match(/\s/) # No White Space
     # Sort password
     str = str.split("").map(&:strip).sort.join
-    errors.add(:password, message: 'should contain at least 3 digits') unless str.match(/\d{3,}/) # 3+ digits
-    errors.add(:password, message: 'should contain at least 10 letters') unless str.match(/\p{L}{10,}/) # 10+ letter
-    errors.add(:password, message: 'should contain at least 1 capital letter') unless str.match(/\p{Lu}/) # 1 Capital letter
-    errors.add(:password, message: 'should contain at least 1 special character (#, @, !...)') unless str.match(/\W+/) # 1 Special letter
+    errors.add(:password, :invalid, message: 'should contain at least 3 digits') unless str.match(/\d{3,}/) # 3+ digits
+    errors.add(:password, :invalid, message: 'should contain at least 10 letters') unless str.match(/\p{L}{10,}/) # 10+ letter
+    errors.add(:password, :invalid, message: 'should contain at least 1 capital letter') unless str.match(/\p{Lu}/) # 1 Capital letter
+    errors.add(:password, :invalid, message: 'should contain at least 1 special character (#, @, !...)') unless str.match(/\W+/) # 1 Special letter
     # Provide key sugesstion
     goodkey = Keychain.generate_key
-    errors.add(:password, message: "Try: #{goodkey} ") if errors.include?(:password)
+    errors.add(:password, :suggestion, message: "suggestion: #{goodkey} ") if errors.include?(:password)
   end
 end
