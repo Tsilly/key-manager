@@ -6,11 +6,11 @@
   .col-sm-12
     = link_to keychains_path do
       %p.pull-left
-        %span.glyphicon.glyphicon-th-list{"aria-hidden" => true}
+        %span.glyphicon.glyphicon-th-list{"aria-hidden" => "true"}
         Go to Keychains List
     = link_to new_category_path do
       %p.pull-right
-        %span.glyphicon.glyphicon-plus-sign{"aria-hidden" => true}
+        %span.glyphicon.glyphicon-plus-sign{"aria-hidden" => "true"}
         Create a category
 .row
   .col-sm-12
@@ -23,8 +23,8 @@
               %p.list-group-item-text= "Keychains: #{keychain_number(c)}"
             .col-sm-1
               = link_to edit_category_path(c) do
-                %span.glyphicon.glyphicon-pencil{"aria-hidden" => true}
+                %span.glyphicon.glyphicon-pencil{"aria-hidden" => "true"}
               - if c.is_empty?
                 = link_to category_path(c), :method => :delete, data: {:confirm => "Are you sure?"} do
-                  %span.glyphicon.glyphicon-trash{"aria-hidden" => true}
+                  %span.glyphicon.glyphicon-trash{"aria-hidden" => "true"}
         

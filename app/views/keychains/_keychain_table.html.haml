@@ -18,9 +18,9 @@
         %td= k.created_at.to_formatted_s(:long)
         %td
           = link_to keychain_path(k), data: {:confirm => "Are you sure?"}, :method => :delete do
-            %span.glyphicon.glyphicon-trash{"aria-hidden" => true}
+            %span.glyphicon.glyphicon-trash{"aria-hidden" => 'true'}
         %td
           = link_to edit_keychain_path(k) do
-            %span.glyphicon.glyphicon-pencil{"aria-hidden" => true}
+            %span.glyphicon.glyphicon-pencil{"aria-hidden" => "true"}
 
             

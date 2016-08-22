@@ -5,18 +5,18 @@
       = @keychain.title
       = link_to edit_keychain_path(@keychain) do
         %small
-          %span.glyphicon.glyphicon-pencil{"aria-hidden" => true}
+          %span.glyphicon.glyphicon-pencil{"aria-hidden" => "true"}
 .row       
   = render 'breadscrumbs', keychain: @keychain
 .row
   .col-sm-12
     = link_to keychains_path do
       %p.pull-left
-        %span.glyphicon.glyphicon-th-list{"aria-hidden" => true}
+        %span.glyphicon.glyphicon-th-list{"aria-hidden" => "true"}
         Go to Keychains List
     = link_to new_keychain_path do
       %p.pull-right
-        %span.glyphicon.glyphicon-plus-sign{"aria-hidden" => true}
+        %span.glyphicon.glyphicon-plus-sign{"aria-hidden" => "true"}
         Create A Keychain
 
 .row
